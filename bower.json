@@ -1,0 +1,26 @@
+{
+  "name": "myexpress",
+  "version": "0.0.0",
+  "authors": [
+    "baza3322 <eric.sqlserver@gmail.com>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "angular": "~1.4.1",
+    "angular-resource": "~1.4.1",
+    "angular-route": "~1.4.1",
+    "toastr": "~2.1.1"
+  }
+}
