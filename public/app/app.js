@@ -16,6 +16,18 @@ angular.module('app').config(function($routeProvider, $locationProvider){
 		});
 });
 
-angular.module('app').controller('mainCtrl', function($scope){
+angular.module('app').controller('mainCtrl', function($scope, BooksService){
 	$scope.myVar= "Hello Angular";
+	
+	BooksService.then(
+		function (data) {
+			$scope.myVar = data.data;
+		},
+		function (reason) {
+			console.log('Error:' + reason);
+		},
+		function (value) {
+
+		}
+	);
 })
