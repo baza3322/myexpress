@@ -1,17 +1,105 @@
 doctype html
-html
-head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
-    link(rel='stylesheet', href='/vendor/toastr/toastr.css')
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    
-    script(type="text/javascript", src="/vendor/jquery/dist/jquery.js")
-    script(type="text/javascript", src="/vendor/angular/angular.js")
-    script(type="text/javascript", src="/vendor/angular-resource/angular-resource.js")
-    script(type="text/javascript", src="/vendor/angular-route/angular-route.js")
-    
-    script(type="text/javascript", src="/app/app.js")
-    script(type="text/javascript", src="/services/books.js")
-  body(ng-app="app")
-    block content
+html(ng-app='app')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    title Dashboard
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', type='text/css', href='bower_components/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', type='text/css', href='bower_components/font-awesome/css/font-awesome.min.css')
+    link(rel='stylesheet', href='css/rdash.css')
+    link(rel='stylesheet', href='css/app.css')
+    link(rel='stylesheet', href='css/animations.css')
+    // Angular
+    script(src='bower_components/angular/angular.js')
+    script(src='bower_components/angular-bootstrap/ui-bootstrap-tpls.js')
+    script(src='bower_components/angular-route/angular-route.js')
+    script(src='bower_components/angular-animate/angular-animate.js')
+    script(src='bower_components/angular-messages/angular-messages.js')
+    // Main Module
+    script(src='app.js')
+    // Global
+    script(src='global/global.js')
+    script(src='global/directives/loading.js')
+    script(src='global/directives/widget.js')
+    script(src='global/directives/widget-body.js')
+    script(src='global/directives/widget-footer.js')
+    script(src='global/directives/widget-header.js')
+    script(src='global/directives/alert.js')
+    // Areas
+    script(src='dashboard/dashboard.js')
+    script(src='dashboard/controllers/mainCtrl.js')
+    script(src='dashboard/controllers/dashboardCtrl.js')
+    script(src='dashboard/controllers/notificationsCtrl.js')
+    script(src='dashboard/controllers/preferencesCtrl.js')
+    script(src='dashboard/controllers/alertsCtrl.js')
+    script(src='dashboard/controllers/charitiesCtrl.js')
+    script(src='dashboard/controllers/followingCtrl.js')
+  body(ng-controller='MainCtrl')
+    #page-wrapper(ng-class="{'open': toggle}", ng-cloak='')
+      // Sidebar
+      #sidebar-wrapper
+        ul.sidebar
+          li.sidebar-main
+            a(ng-click='toggleSidebar()')
+              | Dashboard
+              span.menu-icon.glyphicon.glyphicon-transfer
+          li.sidebar-title
+            span NAVIGATION
+          li.sidebar-list
+            a(href='#/dashboard')
+              | Dashboard 
+              span.menu-icon.fa.fa-tachometer
+          li.sidebar-list
+            a(href='#/notifications')
+              | Notifications 
+              span.menu-icon.fa.fa-bell
+          li.sidebar-list
+            a(href='#/preferences')
+              | Preferences 
+              span.menu-icon.fa.fa-cog
+      // End Sidebar
+      #content-wrapper
+        .page-content
+          // Header Bar
+          .row.header
+            .col-xs-12
+              .user.pull-right
+                .item
+                  a.dropdown-toggle(ng-click='showUserDropdown = !showUserDropdown')
+                    img(src='images/avatar.jpg')
+                  ul.dropdown-menu.dropdown-menu-right(ng-show='showUserDropdown')
+                    li.dropdown-header
+                      | Kevin Weeks
+                    li.divider
+                    li.link
+                      a(href='#')
+                        | Profile
+                    li.link
+                      a(href='#')
+                        | Preferences
+                    li.divider
+                    li.link
+                      a(href='#')
+                        | Logout
+                .item.dropdown
+                  a.dropdown-toggle(ng-click='showNotificationDropdown = !showNotificationDropdown')
+                    i.fa.fa-bell-o
+                  ul.dropdown-menu.dropdown-menu-right(ng-show='showNotificationDropdown')
+                    li.dropdown-header
+                      | Notifications
+                    li.divider
+                    li
+                      a(href='#') 1 New Friend Request
+              .meta
+                .page
+                  | Dashboard
+                .breadcrumb-links
+                  | Home / {{page}}
+          // End Header Bar
+          // Main Content
+          div(ng-view='', ng-animate-children='')
+        // End Page Content
+      // End Content Wrapper
+    // End Page Wrapper
