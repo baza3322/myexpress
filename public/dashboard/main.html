@@ -1,0 +1,94 @@
+<div>
+    <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar">
+                <li class="sidebar-main">
+                    <a ng-click="toggleSidebar()">Dashboard
+                   
+                        <span class="menu-icon glyphicon glyphicon-transfer"></span>
+                    </a>
+                </li>
+                <li class="sidebar-title"><span>NAVIGATION</span></li>
+                <li class="sidebar-list">
+                    <a ui-sref="main.dashboard">Dashboard <span class="menu-icon fa fa-tachometer"></span></a>
+                </li>
+                <li class="sidebar-list">
+                    <a ui-sref="main.notifications">Notifications <span class="menu-icon fa fa-bell"></span></a>
+                </li>
+                <li class="sidebar-list">
+                    <a ui-sref="main.preferences">Preferences <span class="menu-icon fa fa-cog"></span></a>
+                </li>
+            </ul>
+        </div>
+        <!-- End Sidebar -->
+
+        <div id="content-wrapper">
+            <div class="page-content">
+
+                <!-- Header Bar -->
+                <div class="row header">
+                    <div class="col-xs-12">
+                        <div class="user pull-right">
+                            <div class="item">
+                                <a class="dropdown-toggle" ng-click="showUserDropdown = !showUserDropdown">
+                                    <img src="images/avatar.jpg">
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right" ng-show="showUserDropdown">
+                                    <li class="dropdown-header">Kevin Weeks
+                                </li>
+                                    <li class="divider"></li>
+                                    <li class="link">
+                                        <a href="#">Profile
+                                    </a>
+                                    </li>
+                                    <li class="link">
+                                        <a href="#">Preferences
+                                    </a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li class="link">
+                                        <a href="#">Logout
+                                    </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="item dropdown">
+                                <a class="dropdown-toggle" ng-click="showNotificationDropdown = !showNotificationDropdown">
+                                    <i class="fa fa-bell-o"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right" ng-show="showNotificationDropdown">
+                                    <li class="dropdown-header">Notifications
+                                </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="#">1 New Friend Request</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="meta">
+                            <div class="page">
+                                Dashboard
+                       
+                            </div>
+                            <div class="breadcrumb-links">
+                                Home / {{page}}
+                       
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Header Bar -->
+
+                <!-- Main Content -->
+                   <div ui-view></div>
+
+            </div>
+            <!-- End Page Content -->
+        </div>
+        <!-- End Content Wrapper -->
+    </div>
+    <!-- End Page Wrapper -->
+</div>

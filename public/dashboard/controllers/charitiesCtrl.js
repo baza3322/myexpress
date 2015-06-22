@@ -1,5 +1,5 @@
 angular.module('app.dashboard')
-  .controller('CharitiesCtrl', ['$scope', function($scope) {
+  .controller('CharitiesCtrl', ['$scope', 'BooksService', function($scope, BooksService) {
 
     $scope.predicate = 'name';
 
@@ -33,5 +33,17 @@ angular.module('app.dashboard')
     $scope.changeOrder = function() {
       $scope.predicate = $scope.predicate === 'name' ? '-name' : 'name';
     }
+	
+	BooksService.then(
+		function (data) {
+			$scope.title = data.data[0].title;
+		},
+		function (reason) {
+			console.log('Error:' + reason);
+		},
+		function (value) {
+
+		}
+	);
 
   }]);
